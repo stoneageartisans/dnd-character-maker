@@ -24,7 +24,7 @@ Application::~ Application()
 
 void Application::initialize()
 {
-    currentScreen = ScreenType::MAIN_MENU;
+    currentScreen = Screen::MAIN_MENU;
     previousScreen = currentScreen;
 }
 
@@ -38,7 +38,7 @@ void Application::run()
         
         switch(currentScreen)
         {
-            case MAIN_MENU:
+        case Screen::MAIN_MENU:
                 switch(ui.getUserInput())
                 {
                     case '1':
@@ -51,14 +51,14 @@ void Application::run()
                         break;
                     case '3':
                         previousScreen = currentScreen;
-                        currentScreen = EXIT_MENU;
+                        currentScreen = Screen::EXIT_MENU;
                         break;
                     default:
                         ui.showMessage("Invalid choice");
                         break;
                 }
                 break;
-            case EXIT_MENU:
+        case Screen::EXIT_MENU:
                 switch(ui.getUserInput())
                 {
                     case '1':
@@ -67,10 +67,6 @@ void Application::run()
                         break;
                     case '2':
                         currentScreen = previousScreen;
-                        break;
-                    case '3':
-                        previousScreen = currentScreen;
-                        currentScreen = EXIT_MENU;
                         break;
                     default:
                         ui.showMessage("Invalid choice");

@@ -8,6 +8,8 @@
 #ifndef USERINTERFACE_H
 #define USERINTERFACE_H
 
+#include <string>
+
 #include "Screens.h"
 
 class UserInterface
@@ -17,7 +19,7 @@ class UserInterface
         virtual ~UserInterface();
         void showMessage(const string& message);
         char getUserInput();
-        void showScreen(enum ScreenType screen);
+        void showScreen(enum Screen::Type screen);
 
     private:
 };

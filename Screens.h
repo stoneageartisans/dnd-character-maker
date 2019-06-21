@@ -14,50 +14,73 @@
 
 using namespace std;
 
-enum ScreenType
+namespace CreateCharacterMenu
 {
-    MAIN_MENU,
-    EXIT_MENU
-};
+    enum Choices
+    {
+        BACK
+    };
+}
 
-const vector<string> ScreenTitle =
+namespace ExitMenu
 {
-    "MAIN MENU",
-    "EXIT MENU"
-};
+    enum Choices
+    {
+        YES,
+        NO
+    };
+}
 
-enum MainMenu
+namespace LoadCharacterMenu
 {
-    CREATE,
-    LOAD,
-    EXIT
-};
+    enum Choices
+    {
+        BACK
+    };
+}
 
-enum ExitMenu
+namespace MainMenu
 {
-    YES,
-    NO
-};
+    enum Choices
+    {
+        CREATE,
+        LOAD,
+        EXIT
+    };
+}
 
-const map<int, map<int, string>> ScreenItems =
+namespace Screen
 {
+    enum Type
     {
         MAIN_MENU,
-        {
-            { CREATE, "Create Character" },
-            { LOAD, "Load Character" },
-            { EXIT, "Exit App" }
-        }
-    },
+        EXIT_MENU
+    };
+    
+    const vector<string> Title =
     {
-        EXIT_MENU,
+        "MAIN MENU",
+        "CONFIRM EXIT"
+    };
+
+    const map<int, map<int, string>> Content =
+    {
         {
-            { YES, "Yes, exit app" },
-            { NO, "No, go back" }
+            MAIN_MENU,
+            {
+                { MainMenu::CREATE, "Create Character" },
+                { MainMenu::LOAD, "Load Character" },
+                { MainMenu::EXIT, "Exit App" }
+            }
+        },
+        {
+            EXIT_MENU,
+            {
+                { ExitMenu::YES, "Yes, exit app" },
+                { ExitMenu::NO, "No, go back" }
+            }
         }
-    }
-};
+    };
+}
 
 #endif /* SCREENS_H */
-
-

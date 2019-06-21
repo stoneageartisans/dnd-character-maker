@@ -18,8 +18,8 @@ class Application
         void run();
     
     private:
-        enum ScreenType currentScreen;
-        enum ScreenType previousScreen;
+        enum Screen::Type currentScreen;
+        enum Screen::Type previousScreen;
         UserInterface ui;
         void initialize();
 };

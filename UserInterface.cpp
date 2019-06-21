@@ -22,14 +22,14 @@ UserInterface::~ UserInterface()
     // TODO
 }
 
-char UserInterface::getUserInput()
+string UserInterface::getUserInput()
 {
-    char choice[256];
+    string userInput;
     
     cout << endl << "  Enter choice: ";    
-    cin >> choice;
+    cin >> userInput;
     
-    return choice[0];
+    return userInput;
 }
 
 void UserInterface::showMessage(const string& message)

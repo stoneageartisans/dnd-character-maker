@@ -14,34 +14,42 @@
 
 using namespace std;
 
-namespace CreateCharacterMenu
+namespace CreateMenu
 {
-    enum Choices
+    enum Choice
     {
-        BACK
+        ABILITY_SCORES,
+        RACE,
+        CLASS,
+        SKILLS,
+        FEATS,
+        NAME,
+        GENDER,
+        GO_BACK
     };
 }
 
 namespace ExitMenu
 {
-    enum Choices
+    enum Choice
     {
         YES,
         NO
     };
 }
 
-namespace LoadCharacterMenu
+namespace LoadMenu
 {
-    enum Choices
+    enum Choice
     {
-        BACK
+        SELECT_FILE,
+        GO_BACK
     };
 }
 
 namespace MainMenu
 {
-    enum Choices
+    enum Choice
     {
         CREATE,
         LOAD,
@@ -54,12 +62,17 @@ namespace Screen
     enum Type
     {
         MAIN_MENU,
+        CREATE_MENU,
+        LOAD_MENU,
         EXIT_MENU
     };
     
+    // *** Ensure these coincide with the above Type ***
     const vector<string> Title =
     {
         "MAIN MENU",
+        "CREATE CHARACTER",
+        "LOAD CHARACTER",
         "CONFIRM EXIT"
     };
 
@@ -71,6 +84,26 @@ namespace Screen
                 { MainMenu::CREATE, "Create Character" },
                 { MainMenu::LOAD, "Load Character" },
                 { MainMenu::EXIT, "Exit App" }
+            }
+        },
+        {
+            CREATE_MENU,
+            {
+                { CreateMenu::ABILITY_SCORES, "Ability Scores" },
+                { CreateMenu::RACE, "Race" },
+                { CreateMenu::CLASS, "Class" },
+                { CreateMenu::SKILLS, "Skills" },
+                { CreateMenu::FEATS, "Feats" },
+                { CreateMenu::NAME, "Name" },
+                { CreateMenu::GENDER, "Gender" },
+                { CreateMenu::GO_BACK, "Back to Main Menu" }
+            }
+        },
+        {
+            LOAD_MENU,
+            {
+                { LoadMenu::SELECT_FILE, "Select File" },
+                { LoadMenu::GO_BACK, "Back to Main Menu" }
             }
         },
         {

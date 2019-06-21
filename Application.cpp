@@ -19,7 +19,12 @@ Application::Application()
 
 Application::~ Application()
 {
-    // TODO
+    cout << endl;
+}
+
+int Application::getChoice(const string& userInput)
+{
+    return ((userInput[0] - '0') - 1);
 }
 
 void Application::initialize()
@@ -39,40 +44,64 @@ void Application::run()
         switch(currentScreen)
         {
         case Screen::MAIN_MENU:
-                switch(ui.getUserInput())
-                {
-                    case '1':
-                        // Show Create Character menu
-                        ui.showMessage("Create Character");
-                        break;
-                    case '2':
-                        // Show Load Character menu
-                        ui.showMessage("Load Character");
-                        break;
-                    case '3':
-                        previousScreen = currentScreen;
-                        currentScreen = Screen::EXIT_MENU;
-                        break;
-                    default:
-                        ui.showMessage("Invalid choice");
-                        break;
-                }
-                break;
+            switch((enum MainMenu::Choice) getChoice(ui.getUserInput()))
+            {
+                case MainMenu::CREATE: // 
+                    previousScreen = currentScreen;
+                    currentScreen = Screen::CREATE_MENU;
+                    break;
+                case MainMenu::LOAD:
+                    previousScreen = currentScreen;
+                    currentScreen = Screen::LOAD_MENU;
+                    break;
+                case MainMenu::EXIT:
+                    previousScreen = currentScreen;
+                    currentScreen = Screen::EXIT_MENU;
+                    break;
+                default:
+                    ui.showMessage("Invalid choice");
+                    break;
+            }
+            break;
+        case Screen::CREATE_MENU:
+            switch((enum CreateMenu::Choice) getChoice(ui.getUserInput()))
+            {
+                case CreateMenu::GO_BACK:
+                    currentScreen = Screen::MAIN_MENU;
+                    previousScreen = currentScreen;
+                    break;
+                default:
+                    ui.showMessage("Invalid choice");
+                    break;
+            }
+            break;
+        case Screen::LOAD_MENU:
+            switch((enum LoadMenu::Choice) getChoice(ui.getUserInput()))
+            {
+                case LoadMenu::GO_BACK:
+                    currentScreen = Screen::MAIN_MENU;
+                    previousScreen = currentScreen;
+                    break;
+                default:
+                    ui.showMessage("Invalid choice");
+                    break;
+            }
+            break;
         case Screen::EXIT_MENU:
-                switch(ui.getUserInput())
-                {
-                    case '1':
-                        running = false;
-                        ui.showMessage("Exiting application...");
-                        break;
-                    case '2':
-                        currentScreen = previousScreen;
-                        break;
-                    default:
-                        ui.showMessage("Invalid choice");
-                        break;
-                }
-                break;
+            switch((enum ExitMenu::Choice) getChoice(ui.getUserInput()))
+            {
+                case ExitMenu::YES:
+                    running = false;
+                    ui.showMessage("Exiting application...");
+                    break;
+                case ExitMenu::NO:
+                    currentScreen = previousScreen;
+                    break;
+                default:
+                    ui.showMessage("Invalid choice");
+                    break;
+            }
+            break;
         }
     }
 }

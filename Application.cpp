@@ -24,13 +24,13 @@ Application::~ Application()
 
 int Application::getChoice(const string& userInput)
 {
+    // Convert user input to an array index
     return ((userInput[0] - '0') - 1);
 }
 
 void Application::initialize()
 {
     currentScreen = Screen::MAIN_MENU;
-    previousScreen = currentScreen;
 }
 
 void Application::run()
@@ -46,16 +46,13 @@ void Application::run()
         case Screen::MAIN_MENU:
             switch((enum MainMenu::Choice) getChoice(ui.getUserInput()))
             {
-                case MainMenu::CREATE: // 
-                    previousScreen = currentScreen;
+                case MainMenu::CREATE:
                     currentScreen = Screen::CREATE_MENU;
                     break;
                 case MainMenu::LOAD:
-                    previousScreen = currentScreen;
                     currentScreen = Screen::LOAD_MENU;
                     break;
                 case MainMenu::EXIT:
-                    previousScreen = currentScreen;
                     currentScreen = Screen::EXIT_MENU;
                     break;
                 default:
@@ -66,9 +63,30 @@ void Application::run()
         case Screen::CREATE_MENU:
             switch((enum CreateMenu::Choice) getChoice(ui.getUserInput()))
             {
-                case CreateMenu::GO_BACK:
+                case CreateMenu::ABILITIES:
+                    currentScreen = Screen::ABILITIES_MENU;
+                    break;
+                case CreateMenu::SAVE_DONE:
+                    // Save character to file (XML or JSON?)
+                    ui.showMessage("Character saved.");
                     currentScreen = Screen::MAIN_MENU;
-                    previousScreen = currentScreen;
+                    break;
+                case CreateMenu::ABANDON:
+                    // Implement confirm screen
+                    // Reset character
+                    ui.showMessage("Character abandoned!");
+                    currentScreen = Screen::MAIN_MENU;
+                    break;
+                default:
+                    ui.showMessage("Invalid choice");
+                    break;
+            }
+            break;
+        case Screen::ABILITIES_MENU:
+            switch((enum AbilitiesMenu::Choice) getChoice(ui.getUserInput()))
+            {
+                case AbilitiesMenu::DONE:
+                    currentScreen = Screen::CREATE_MENU;
                     break;
                 default:
                     ui.showMessage("Invalid choice");
@@ -80,7 +98,6 @@ void Application::run()
             {
                 case LoadMenu::GO_BACK:
                     currentScreen = Screen::MAIN_MENU;
-                    previousScreen = currentScreen;
                     break;
                 default:
                     ui.showMessage("Invalid choice");
@@ -95,7 +112,7 @@ void Application::run()
                     ui.showMessage("Exiting application...");
                     break;
                 case ExitMenu::NO:
-                    currentScreen = previousScreen;
+                    currentScreen = Screen::MAIN_MENU;
                     break;
                 default:
                     ui.showMessage("Invalid choice");

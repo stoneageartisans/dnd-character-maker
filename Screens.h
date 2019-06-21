@@ -10,22 +10,36 @@
 
 #include <map>
 #include <string>
-#include <vector>
 
 using namespace std;
+
+namespace AbilitiesMenu
+{
+    enum Choice
+    {
+        STRENGTH,
+        DEXTERITY,
+        CONSTITUTION,
+        INTELLIGENCE,
+        WISDOM,
+        CHARISMA,
+        DONE
+    };
+}
 
 namespace CreateMenu
 {
     enum Choice
     {
-        ABILITY_SCORES,
+        ABILITIES,
         RACE,
         CLASS,
         SKILLS,
         FEATS,
         NAME,
         GENDER,
-        GO_BACK
+        SAVE_DONE,
+        ABANDON
     };
 }
 
@@ -61,42 +75,55 @@ namespace Screen
 {
     enum Type
     {
-        MAIN_MENU,
+        ABILITIES_MENU,
         CREATE_MENU,
+        EXIT_MENU,
         LOAD_MENU,
-        EXIT_MENU
+        MAIN_MENU
     };
     
-    // *** Ensure these coincide with the above Type ***
-    const vector<string> Title =
+    const map<int, string> Title =
     {
-        "MAIN MENU",
-        "CREATE CHARACTER",
-        "LOAD CHARACTER",
-        "CONFIRM EXIT"
+        { ABILITIES_MENU, "MODIFY ABILITY" },
+        { CREATE_MENU, "CREATE CHARACTER" },
+        { EXIT_MENU, "CONFIRM EXIT" },
+        { LOAD_MENU, "LOAD CHARACTER" },
+        { MAIN_MENU, "MAIN MENU" }
     };
 
     const map<int, map<int, string>> Content =
     {
         {
-            MAIN_MENU,
+            ABILITIES_MENU,
             {
-                { MainMenu::CREATE, "Create Character" },
-                { MainMenu::LOAD, "Load Character" },
-                { MainMenu::EXIT, "Exit App" }
+                { AbilitiesMenu::STRENGTH, "Strength" },
+                { AbilitiesMenu::DEXTERITY, "Dexterity" },
+                { AbilitiesMenu::CONSTITUTION, "Constitution" },
+                { AbilitiesMenu::INTELLIGENCE, "Intelligence" },
+                { AbilitiesMenu::WISDOM, "Wisdom" },
+                { AbilitiesMenu::CHARISMA, "Charism" },
+                { AbilitiesMenu::DONE, "Done" }
             }
         },
         {
             CREATE_MENU,
             {
-                { CreateMenu::ABILITY_SCORES, "Ability Scores" },
+                { CreateMenu::ABILITIES, "Abilities" },
                 { CreateMenu::RACE, "Race" },
                 { CreateMenu::CLASS, "Class" },
                 { CreateMenu::SKILLS, "Skills" },
                 { CreateMenu::FEATS, "Feats" },
                 { CreateMenu::NAME, "Name" },
                 { CreateMenu::GENDER, "Gender" },
-                { CreateMenu::GO_BACK, "Back to Main Menu" }
+                { CreateMenu::SAVE_DONE, "Save & Done" },
+                { CreateMenu::ABANDON, "Abandon Character" }
+            }
+        },
+        {
+            EXIT_MENU,
+            {
+                { ExitMenu::YES, "Yes, exit app" },
+                { ExitMenu::NO, "No, go back" }
             }
         },
         {
@@ -107,10 +134,11 @@ namespace Screen
             }
         },
         {
-            EXIT_MENU,
+            MAIN_MENU,
             {
-                { ExitMenu::YES, "Yes, exit app" },
-                { ExitMenu::NO, "No, go back" }
+                { MainMenu::CREATE, "Create Character" },
+                { MainMenu::LOAD, "Load Character" },
+                { MainMenu::EXIT, "Exit App" }
             }
         }
     };

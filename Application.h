@@ -19,7 +19,6 @@ class Application
     
     private:
         enum Screen::Type currentScreen;
-        enum Screen::Type previousScreen;
         UserInterface ui;
         int getChoice(const string& userInput);
         void initialize();

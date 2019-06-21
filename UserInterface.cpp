@@ -39,7 +39,7 @@ void UserInterface::showMessage(const string& message)
 
 void UserInterface::showScreen(enum Screen::Type screen)
 {
-    cout << endl << Screen::Title[screen] << endl << endl;
+    cout << endl << Screen::Title.at(screen) << endl << endl;
     
     for(int i = 0; i < Screen::Content.at(screen).size(); i ++)
     {

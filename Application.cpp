@@ -68,14 +68,11 @@ void Application::run()
                     break;
                 case CreateMenu::SAVE_DONE:
                     // Save character to file (XML or JSON?)
-                    ui.showMessage("Character saved.");
                     currentScreen = Screen::MAIN_MENU;
+                    ui.showMessage("Character saved.");
                     break;
                 case CreateMenu::ABANDON:
-                    // Implement confirm screen
-                    // Reset character
-                    ui.showMessage("Character abandoned!");
-                    currentScreen = Screen::MAIN_MENU;
+                    currentScreen = Screen::ABANDON_MENU;
                     break;
                 default:
                     ui.showMessage("Invalid choice");
@@ -86,6 +83,22 @@ void Application::run()
             switch((enum AbilitiesMenu::Choice) getChoice(ui.getUserInput()))
             {
                 case AbilitiesMenu::DONE:
+                    currentScreen = Screen::CREATE_MENU;
+                    break;
+                default:
+                    ui.showMessage("Invalid choice");
+                    break;
+            }
+            break;
+        case Screen::ABANDON_MENU:
+            switch((enum AbandonMenu::Choice) getChoice(ui.getUserInput()))
+            {
+                case AbandonMenu::YES:
+                    // Reset character
+                    currentScreen = Screen::MAIN_MENU;
+                    ui.showMessage("Character abandoned!");
+                    break;
+                case AbandonMenu::NO:
                     currentScreen = Screen::CREATE_MENU;
                     break;
                 default:

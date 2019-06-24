@@ -13,6 +13,15 @@
 
 using namespace std;
 
+namespace AbandonMenu
+{
+    enum Choice
+    {
+        YES,
+        NO
+    };
+}
+
 namespace AbilitiesMenu
 {
     enum Choice
@@ -75,6 +84,7 @@ namespace Screen
 {
     enum Type
     {
+        ABANDON_MENU,
         ABILITIES_MENU,
         CREATE_MENU,
         EXIT_MENU,
@@ -84,15 +94,23 @@ namespace Screen
     
     const map<int, string> Title =
     {
+        { ABANDON_MENU, "Do you want to abandon this character?" },
         { ABILITIES_MENU, "MODIFY ABILITY" },
         { CREATE_MENU, "CREATE CHARACTER" },
-        { EXIT_MENU, "CONFIRM EXIT" },
+        { EXIT_MENU, "Do you want to exit?" },
         { LOAD_MENU, "LOAD CHARACTER" },
         { MAIN_MENU, "MAIN MENU" }
     };
 
     const map<int, map<int, string>> Content =
     {
+        {
+            ABANDON_MENU,
+            {
+                { AbandonMenu::YES, "Yes, abandon it" },
+                { AbandonMenu::NO, "No, go back" }
+            }
+        },
         {
             ABILITIES_MENU,
             {

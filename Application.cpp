@@ -10,8 +10,6 @@
 
 #include "Application.h"
 
-using namespace std;
-
 Application::Application()
 {
     initialize();

@@ -12,6 +12,8 @@
 
 #include "Screens.h"
 
+using namespace std;
+
 class UserInterface
 {
     public:

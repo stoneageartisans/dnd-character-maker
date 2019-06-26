@@ -10,6 +10,8 @@
 
 #include "UserInterface.h"
 
+using namespace std;
+
 class Application
 {
     public:

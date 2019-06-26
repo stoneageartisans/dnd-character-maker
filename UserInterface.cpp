@@ -10,8 +10,6 @@
 
 #include "UserInterface.h"
 
-using namespace std;
-
 UserInterface::UserInterface()
 {
     // TODO

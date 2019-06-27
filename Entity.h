@@ -17,8 +17,9 @@ class Entity
     public:
         Entity();
         virtual ~Entity();
+        
     private:
-        int id;
+        int id;        
         string name;
         
         void initialize();

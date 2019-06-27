@@ -17,12 +17,14 @@ class Application
     public:
         Application();
         virtual ~Application();
+        
         void run();
     
     private:
         enum Screen::Type currentScreen;
-        UserInterface ui;
         int getChoice(const string& userInput);
+        UserInterface ui;
+        
         void initialize();
 };
 

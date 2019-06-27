@@ -19,6 +19,7 @@ class UserInterface
     public:
         UserInterface();
         virtual ~UserInterface();
+        
         void showMessage(const string& message);
         string getUserInput();
         void showScreen(enum Screen::Type screen);

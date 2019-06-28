@@ -1,4 +1,3 @@
-
 /* 
  * File:   UserInterface.cpp
  * Author: william.mann@stoneageartisans.com

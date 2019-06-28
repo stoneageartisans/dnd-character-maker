@@ -1,4 +1,3 @@
-
 /* 
  * File:   Application.cpp
  * Author: william.mann@stoneageartisans.com

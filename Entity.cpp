@@ -1,6 +1,6 @@
 /* 
  * File:   Entity.cpp
- * Author: vn50esl
+ * Author: william.mann@stoneageartisans.com
  * 
  * Created on June 23, 2019, 11:04 PM
  */

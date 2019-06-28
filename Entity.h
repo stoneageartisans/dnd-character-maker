@@ -19,7 +19,13 @@ class Entity
         virtual ~Entity();
         
     private:
-        int id;        
+        int charisma;
+        int constitution;
+        int dexterity;
+        int id;
+        int intelligence;
+        int strength;
+        int wisdom;
         string name;
         
         void initialize();

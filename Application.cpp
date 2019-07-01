@@ -17,6 +17,8 @@ Application::Application()
 Application::~ Application()
 {
     cout << endl;
+    
+    delete entity;
 }
 
 int Application::getChoice(const string& userInput)
@@ -28,6 +30,9 @@ int Application::getChoice(const string& userInput)
 void Application::initialize()
 {
     currentScreen = Screen::MAIN_MENU;
+    
+    entity = new Entity(0);
+    entity->save("entity1.xml"); // just a test
 }
 
 void Application::run()

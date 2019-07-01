@@ -7,9 +7,12 @@
 
 #include "Entity.h"
 
-Entity::Entity()
+#include <fstream>
+#include <string>
+
+Entity::Entity(int _id)
 {
-    initialize();
+    initialize(_id);
 }
 
 Entity::~Entity()
@@ -17,7 +20,44 @@ Entity::~Entity()
     // TODO
 }
 
-void Entity::initialize()
+string Entity::getIndentation(int spaceCount)
+{
+    string indentation = "";
+    
+    for(int i = 0 ; i < spaceCount; i ++)
+    {
+        indentation += " ";
+    }
+    
+    return indentation;
+}
+
+void Entity::initialize(int _id)
+{
+    id = _id;
+    name = "Not Assigned";
+}
+
+void Entity::load()
 {
     // TODO
+}
+
+void Entity::save(const string& filename)
+{
+    ofstream outputFileStream(filename);
+    
+    if(outputFileStream.is_open())
+    {
+        outputFileStream << "<entity>" << endl;
+        
+        outputFileStream << getIndentation(4) << "<name>" << name << "</name>" << endl;
+        outputFileStream << getIndentation(4) << "<id>" << id << "</id>" << endl;
+        
+        outputFileStream << "</entity>" << endl;
+        
+        outputFileStream << endl;
+    }
+    
+    outputFileStream.close();
 }

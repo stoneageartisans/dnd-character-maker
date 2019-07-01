@@ -15,8 +15,9 @@ using namespace std;
 class Entity
 {
     public:
-        Entity();
+        Entity(int _id);
         virtual ~Entity();
+        void save(const string& filename);
         
     private:
         int charisma;
@@ -28,7 +29,9 @@ class Entity
         int wisdom;
         string name;
         
-        void initialize();
+        string getIndentation(int spaceCount);
+        void initialize(int _id);
+        void load();
 };
 
 #endif /* ENTITY_H */

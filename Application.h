@@ -9,6 +9,7 @@
 #define APPLICATION_H
 
 #include "UserInterface.h"
+#include "Entity.h"
 
 using namespace std;
 
@@ -21,6 +22,7 @@ class Application
         void run();
     
     private:
+        Entity* entity;
         enum Screen::Type currentScreen;
         int getChoice(const string& userInput);
         UserInterface ui;

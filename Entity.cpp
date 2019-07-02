@@ -35,7 +35,13 @@ string Entity::getIndentation(int spaceCount)
 void Entity::initialize(int _id)
 {
     id = _id;
-    name = "Not Assigned";
+    name = "Not Chosen";
+    strength = 10;
+    dexterity = 10;
+    constitution = 10;
+    intelligence = 10;
+    wisdom = 10;
+    charisma = 10;
 }
 
 void Entity::load()
@@ -49,13 +55,15 @@ void Entity::save(const string& filename)
     
     if(outputFileStream.is_open())
     {
-        outputFileStream << "<entity>" << endl;
-        
-        outputFileStream << getIndentation(4) << "<name>" << name << "</name>" << endl;
-        outputFileStream << getIndentation(4) << "<id>" << id << "</id>" << endl;
-        
-        outputFileStream << "</entity>" << endl;
-        
+        outputFileStream << "<entity>" << endl;        
+        outputFileStream << "    <name>" << name << "</name>" << endl;
+        outputFileStream << "    <strength>" << strength << "</strength>" << endl;
+        outputFileStream << "    <dexterity>" << dexterity << "</dexterity>" << endl;
+        outputFileStream << "    <constitution>" << constitution << "</constitution>" << endl;
+        outputFileStream << "    <intelligence>" << intelligence << "</intelligence>" << endl;
+        outputFileStream << "    <wisdom>" << wisdom << "</wisdom>" << endl;
+        outputFileStream << "    <charisma>" << charisma << "</charisma>" << endl;
+        outputFileStream << "</entity>" << endl;        
         outputFileStream << endl;
     }
     

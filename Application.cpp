@@ -32,7 +32,7 @@ void Application::initialize()
     currentScreen = Screen::MAIN_MENU;
     
     entity = new Entity(0);
-    entity->save("entity1.xml"); // just a test
+    
 }
 
 void Application::run()
@@ -69,7 +69,7 @@ void Application::run()
                     currentScreen = Screen::ABILITIES_MENU;
                     break;
                 case CreateMenu::SAVE_DONE:
-                    // Save character to file (XML or JSON?)
+                    entity->save("entity1.xml");
                     currentScreen = Screen::MAIN_MENU;
                     ui.showMessage("Character saved.");
                     break;

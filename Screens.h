@@ -80,6 +80,16 @@ namespace MainMenu
     };
 }
 
+namespace SaveMenu
+{
+    enum Choice
+    {
+        QUICK_SAVE,
+        SAVE_AS,
+        GO_BACK
+    };
+}
+
 namespace Screen
 {
     enum Type
@@ -89,7 +99,8 @@ namespace Screen
         CREATE_MENU,
         EXIT_MENU,
         LOAD_MENU,
-        MAIN_MENU
+        MAIN_MENU,
+        SAVE_MENU
     };
     
     const map<int, string> Title =
@@ -99,7 +110,8 @@ namespace Screen
         { CREATE_MENU, "CREATE CHARACTER" },
         { EXIT_MENU, "Do you want to exit?" },
         { LOAD_MENU, "LOAD CHARACTER" },
-        { MAIN_MENU, "MAIN MENU" }
+        { MAIN_MENU, "MAIN MENU" },
+        { SAVE_MENU, "SAVE MENU" }
     };
 
     const map<int, map<int, string>> Content =
@@ -157,6 +169,14 @@ namespace Screen
                 { MainMenu::CREATE, "Create Character" },
                 { MainMenu::LOAD, "Load Character" },
                 { MainMenu::EXIT, "Exit App" }
+            }
+        },
+        {
+            SAVE_MENU,
+            {
+                { SaveMenu::QUICK_SAVE, "Quick Save" },
+                { SaveMenu::SAVE_AS, "Save As" },
+                { SaveMenu::GO_BACK, "Go Back" }
             }
         }
     };

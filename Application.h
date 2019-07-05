@@ -8,6 +8,8 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+#include <string>
+
 #include "UserInterface.h"
 #include "Entity.h"
 
@@ -22,9 +24,10 @@ class Application
         void run();
     
     private:
-        Entity* entity;
+        Entity* character01;
         enum Screen::Type currentScreen;
         int getChoice(const string& userInput);
+        string filename;
         UserInterface ui;
         
         void initialize();

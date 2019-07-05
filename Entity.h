@@ -17,7 +17,9 @@ class Entity
     public:
         Entity(int _id);
         virtual ~Entity();
+        const string& getName();
         void save(const string& filename);
+        void setName(const string& _name);
         
     private:
         int charisma;

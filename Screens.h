@@ -80,12 +80,20 @@ namespace MainMenu
     };
 }
 
+namespace NameMenu
+{
+    enum Choice
+    {
+        SET_NAME,
+        GO_BACK
+    };
+}
+
 namespace SaveMenu
 {
     enum Choice
     {
-        QUICK_SAVE,
-        SAVE_AS,
+        SAVE,
         GO_BACK
     };
 }
@@ -100,6 +108,7 @@ namespace Screen
         EXIT_MENU,
         LOAD_MENU,
         MAIN_MENU,
+        NAME_MENU,
         SAVE_MENU
     };
     
@@ -111,6 +120,7 @@ namespace Screen
         { EXIT_MENU, "Do you want to exit?" },
         { LOAD_MENU, "LOAD CHARACTER" },
         { MAIN_MENU, "MAIN MENU" },
+        { NAME_MENU, "CHARACTER NAME" },
         { SAVE_MENU, "SAVE MENU" }
     };
 
@@ -172,11 +182,17 @@ namespace Screen
             }
         },
         {
+            NAME_MENU,
+            {
+                { NameMenu::SET_NAME, "Set Character Name" },
+                { NameMenu::GO_BACK, "Nevermind, Go Back" }
+            }
+        },
+        {
             SAVE_MENU,
             {
-                { SaveMenu::QUICK_SAVE, "Quick Save" },
-                { SaveMenu::SAVE_AS, "Save As" },
-                { SaveMenu::GO_BACK, "Go Back" }
+                { SaveMenu::SAVE, "Save Character" },
+                { SaveMenu::GO_BACK, "Not yet, go Back" }
             }
         }
     };

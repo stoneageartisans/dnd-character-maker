@@ -22,6 +22,7 @@ class UserInterface
         
         void showMessage(const string& message);
         string getUserInput();
+        string getUserInput(const string& inputName, const string& defaultInput);
         void showScreen(enum Screen::Type screen);
 
     private:

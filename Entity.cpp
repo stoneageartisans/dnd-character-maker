@@ -32,10 +32,15 @@ string Entity::getIndentation(int spaceCount)
     return indentation;
 }
 
+const string& Entity::getName()
+{
+    return name;
+}
+
 void Entity::initialize(int _id)
 {
     id = _id;
-    name = "Not Chosen";
+    name = "unnamed";
     strength = 10;
     dexterity = 10;
     constitution = 10;
@@ -68,4 +73,9 @@ void Entity::save(const string& filename)
     }
     
     outputFileStream.close();
+}
+
+void Entity::setName(const string& _name)
+{
+    name = _name;
 }

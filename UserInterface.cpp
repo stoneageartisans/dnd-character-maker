@@ -23,8 +23,27 @@ string UserInterface::getUserInput()
 {
     string userInput;
     
-    cout << endl << "  Enter choice: ";    
+    cout << endl << "  Enter choice: ";
+    
     cin >> userInput;
+    
+    return userInput;
+}
+
+string UserInterface::getUserInput(const string& inputName, const string& defaultInput)
+{
+    string userInput;
+    
+    cout << endl << "  Enter new " << inputName << " or press [ENTER] for " << defaultInput << ": ";
+    
+    cin.ignore(10000,'\n');
+    
+    getline(cin, userInput);
+
+    if(userInput.length() < 1)
+    {
+        userInput = defaultInput;
+    }
     
     return userInput;
 }
